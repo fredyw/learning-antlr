@@ -9,14 +9,14 @@ import org.antlr.v4.runtime.ANTLRInputStream;
 import org.antlr.v4.runtime.CommonTokenStream;
 import org.antlr.v4.runtime.tree.ParseTree;
 
-import antlr.CalculatorBaseVisitor;
-import antlr.CalculatorLexer;
-import antlr.CalculatorParser;
-import antlr.CalculatorParser.ExpressionContext;
-import antlr.CalculatorParser.ExpressionNewLineContext;
-import antlr.CalculatorParser.IntContext;
-import antlr.CalculatorParser.MulDivAddSubContext;
-import antlr.CalculatorParser.ParenthesisContext;
+import calculator.CalculatorBaseVisitor;
+import calculator.CalculatorLexer;
+import calculator.CalculatorParser;
+import calculator.CalculatorParser.ExpressionContext;
+import calculator.CalculatorParser.ExpressionNewLineContext;
+import calculator.CalculatorParser.IntContext;
+import calculator.CalculatorParser.MulDivAddSubContext;
+import calculator.CalculatorParser.ParenthesisContext;
 
 public class Calculator extends CalculatorBaseVisitor<Integer> {
     @Override
