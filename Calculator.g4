@@ -1,12 +1,15 @@
 grammar Calculator;
 
-prog : expr+ ;
+prog : stat+ ;
+
+stat : expr # Expression
+     | expr NEWLINE # ExpressionNewLine
+     | NEWLINE # NewLine
+     ;
      
 expr : expr op=(MUL | DIV | ADD | SUB) expr # MulDivAddSub
-     | '(' expr ')' # Parens
+     | '(' expr ')' # Parenthesis
      | INT # Int
-     | expr NEWLINE # ExpressionNewLine
-     | NEWLINE # Blank
      ;
 
 MUL     : '*' ;

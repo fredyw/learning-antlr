@@ -18,14 +18,21 @@ public class CalculatorBaseVisitor<T> extends AbstractParseTreeVisitor<T> implem
 	 * <p>The default implementation returns the result of calling
 	 * {@link #visitChildren} on {@code ctx}.</p>
 	 */
-	@Override public T visitBlank(@NotNull CalculatorParser.BlankContext ctx) { return visitChildren(ctx); }
+	@Override public T visitParenthesis(@NotNull CalculatorParser.ParenthesisContext ctx) { return visitChildren(ctx); }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation returns the result of calling
 	 * {@link #visitChildren} on {@code ctx}.</p>
 	 */
-	@Override public T visitParens(@NotNull CalculatorParser.ParensContext ctx) { return visitChildren(ctx); }
+	@Override public T visitNewLine(@NotNull CalculatorParser.NewLineContext ctx) { return visitChildren(ctx); }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation returns the result of calling
+	 * {@link #visitChildren} on {@code ctx}.</p>
+	 */
+	@Override public T visitExpression(@NotNull CalculatorParser.ExpressionContext ctx) { return visitChildren(ctx); }
 	/**
 	 * {@inheritDoc}
 	 *
@@ -46,12 +53,12 @@ public class CalculatorBaseVisitor<T> extends AbstractParseTreeVisitor<T> implem
 	 * <p>The default implementation returns the result of calling
 	 * {@link #visitChildren} on {@code ctx}.</p>
 	 */
-	@Override public T visitMulDivAddSub(@NotNull CalculatorParser.MulDivAddSubContext ctx) { return visitChildren(ctx); }
+	@Override public T visitExpressionNewLine(@NotNull CalculatorParser.ExpressionNewLineContext ctx) { return visitChildren(ctx); }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation returns the result of calling
 	 * {@link #visitChildren} on {@code ctx}.</p>
 	 */
-	@Override public T visitExpressionNewLine(@NotNull CalculatorParser.ExpressionNewLineContext ctx) { return visitChildren(ctx); }
+	@Override public T visitMulDivAddSub(@NotNull CalculatorParser.MulDivAddSubContext ctx) { return visitChildren(ctx); }
 }

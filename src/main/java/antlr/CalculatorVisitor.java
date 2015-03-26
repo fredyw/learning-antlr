@@ -12,19 +12,26 @@ import org.antlr.v4.runtime.tree.ParseTreeVisitor;
  */
 public interface CalculatorVisitor<T> extends ParseTreeVisitor<T> {
 	/**
-	 * Visit a parse tree produced by the {@code Blank}
+	 * Visit a parse tree produced by the {@code Parenthesis}
 	 * labeled alternative in {@link CalculatorParser#expr}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitBlank(@NotNull CalculatorParser.BlankContext ctx);
+	T visitParenthesis(@NotNull CalculatorParser.ParenthesisContext ctx);
 	/**
-	 * Visit a parse tree produced by the {@code Parens}
-	 * labeled alternative in {@link CalculatorParser#expr}.
+	 * Visit a parse tree produced by the {@code NewLine}
+	 * labeled alternative in {@link CalculatorParser#stat}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitParens(@NotNull CalculatorParser.ParensContext ctx);
+	T visitNewLine(@NotNull CalculatorParser.NewLineContext ctx);
+	/**
+	 * Visit a parse tree produced by the {@code Expression}
+	 * labeled alternative in {@link CalculatorParser#stat}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitExpression(@NotNull CalculatorParser.ExpressionContext ctx);
 	/**
 	 * Visit a parse tree produced by {@link CalculatorParser#prog}.
 	 * @param ctx the parse tree
@@ -39,17 +46,17 @@ public interface CalculatorVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitInt(@NotNull CalculatorParser.IntContext ctx);
 	/**
+	 * Visit a parse tree produced by the {@code ExpressionNewLine}
+	 * labeled alternative in {@link CalculatorParser#stat}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitExpressionNewLine(@NotNull CalculatorParser.ExpressionNewLineContext ctx);
+	/**
 	 * Visit a parse tree produced by the {@code MulDivAddSub}
 	 * labeled alternative in {@link CalculatorParser#expr}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
 	T visitMulDivAddSub(@NotNull CalculatorParser.MulDivAddSubContext ctx);
-	/**
-	 * Visit a parse tree produced by the {@code ExpressionNewLine}
-	 * labeled alternative in {@link CalculatorParser#expr}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitExpressionNewLine(@NotNull CalculatorParser.ExpressionNewLineContext ctx);
 }

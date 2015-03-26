@@ -12,12 +12,20 @@ import org.antlr.v4.runtime.tree.ParseTree;
 import antlr.CalculatorBaseVisitor;
 import antlr.CalculatorLexer;
 import antlr.CalculatorParser;
+import antlr.CalculatorParser.ExpressionContext;
 import antlr.CalculatorParser.ExpressionNewLineContext;
 import antlr.CalculatorParser.IntContext;
 import antlr.CalculatorParser.MulDivAddSubContext;
-import antlr.CalculatorParser.ParensContext;
+import antlr.CalculatorParser.ParenthesisContext;
 
 public class Calculator extends CalculatorBaseVisitor<Integer> {
+    @Override
+    public Integer visitExpression(ExpressionContext ctx) {
+        int value = visit(ctx.expr());
+        System.out.println(value);
+        return 0;
+    }
+    
     /**
      * {@inheritDoc}
      */
@@ -57,7 +65,7 @@ public class Calculator extends CalculatorBaseVisitor<Integer> {
      * {@inheritDoc}
      */
     @Override
-    public Integer visitParens(ParensContext ctx) {
+    public Integer visitParenthesis(ParenthesisContext ctx) {
         return visit(ctx.expr());
     }
     
