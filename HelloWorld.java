@@ -9,6 +9,6 @@ public final class HelloWorld implements Serializable {
     }
     
     private void saySomething(String message) {
-        System.out.println(message);
+        return message;
     }
 }

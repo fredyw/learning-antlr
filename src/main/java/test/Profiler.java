@@ -68,15 +68,18 @@ public class Profiler extends JavaBaseListener {
         }
         String args = tokens.getText(ctx.formalParameters());
         System.out.println(type + " " + ctx.Identifier() + args + " {");
-        System.out.println("        String __name = Thread.currentThread().getStackTrace()[1].getClassName() + \".\" + Thread.currentThread().getStackTrace()[1].getMethodName();");
-        System.out.println("        System.out.println(\"BEGIN: \" + __name);");
-        System.out.println("        long __startTime = System.currentTimeMillis();");
+        System.out.println("        try {");
+        System.out.println("            String __name = Thread.currentThread().getStackTrace()[1].getClassName() + \".\" + Thread.currentThread().getStackTrace()[1].getMethodName();");
+        System.out.println("            System.out.println(\"BEGIN: \" + __name);");
+        System.out.println("            long __startTime = System.currentTimeMillis();");
     }
 
     @Override
     public void exitMethodDeclaration(MethodDeclarationContext ctx) {
-        System.out.println("        System.out.println(System.currentTimeMillis() - __startTime);");
-        System.out.println("        System.out.println(\"END: \" + __name);");
+        System.out.println("        } finally {");
+        System.out.println("            System.out.println(System.currentTimeMillis() - __startTime);");
+        System.out.println("            System.out.println(\"END: \" + __name);");
+        System.out.println("        }");
         System.out.println("    }");
         System.out.println();
     }
